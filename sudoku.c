@@ -193,20 +193,20 @@ void agregarNodosListaAPila(List *lista, Stack *pila) {
    while (nodo != NULL) {
       push(pila, nodo);
       nodo = next(lista);
-      //liberar memoria
    }
 }
 
-Node* DFS(Node* initial, int* cont) {
+Node* DFS(Node* n, int* cont) {
    //1 Cree un stack S (pila) e inserte el nodo.
    Stack *pila = createStack();
-   push(pila, initial);
+   push(pila, n);
+   *cont = 0;
 
    //2 Mientras el stack S no se encuentre vacío:
    while (!is_empty(pila)) {
+      (*cont)++;
       //a) Saque y elimine el primer nodo de S.
-      Node *nodoAux = top(pila);
-      Node *nodoTop = copy(nodoAux);
+      Node *nodoTop = top(pila);
       pop(pila);
       
       //b) Verifique si corresponde a un estado final, si es así retorne el nodo.
