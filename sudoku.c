@@ -45,11 +45,12 @@ void print_node(Node* n){
 
 int cumpleFila(int sudo[9][9]) {
    int numActual;
+   int fila,col;
 
-   for (int fila = 0 ; fila < 9 ; fila++) {
+   for (fila = 0 ; fila < 9 ; fila++) {
       //           {1,2,3,4,5,6,7,8,9};
       int pos[9] = {0,0,0,0,0,0,0,0,0};
-      for (int col = 0 ; col < 9 ; col++) {
+      for (col = 0 ; col < 9 ; col++) {
          numActual = sudo[fila][col];
          if (pos[numActual - 1] == 0)
             pos[numActual - 1] = 1;
@@ -62,11 +63,12 @@ int cumpleFila(int sudo[9][9]) {
 
 int cumpleColumna(int sudo[9][9]) {
    int numActual;
+   int fila,col;
 
-   for (int col = 0 ; col < 9 ; col++) {
+   for (col = 0 ; col < 9 ; col++) {
       //           {1,2,3,4,5,6,7,8,9};
       int pos[9] = {0,0,0,0,0,0,0,0,0};
-      for (int fila = 0 ; fila < 9 ; fila++) {
+      for (fila = 0 ; fila < 9 ; fila++) {
          numActual = sudo[fila][col];
          if (pos[numActual - 1] == 0)
             pos[numActual - 1] = 1;
@@ -88,8 +90,8 @@ int cumpleSubMatriz(int sudo[9][9]) {
          int j = 3 * (numSub%3) + (p%3) ;
          numActual = sudo[i][j];
 
-         if (pos[numActual] == 0)
-            pos[numActual] = 1;
+         if (pos[numActual - 1] == 0)
+            pos[numActual - 1] = 1;
          else
             return 0;
       }
