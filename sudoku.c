@@ -60,13 +60,30 @@ int cumpleFila(int sudo[9][9]) {
    return 1;
 }
 
+int cumpleColumna(int sudo[9][9]) {
+   int numActual;
+
+   for (int col = 0 ; col < 9 ; col++) {
+      //        numeros {1,2,3,4,5,6,7,8,9};
+      int vNumeros[9] = {0,0,0,0,0,0,0,0,0};
+      for (int fila = 0 ; fila < 9 ; fila++) {
+         numActual = sudo[fila][col];
+         if (vNumeros[numActual] == 0)
+            vNumeros[numActual] = 1;
+         else
+            return 0;
+      }
+   }
+   return 1;
+}
+
 
 
 int is_valid(Node* n) {
    if (!cumpleFila(n->sudo))
       return 0;
-   //if (noCumpleColumna(n->sudo))
-   //   return 0;
+   if (!cumpleColumna(n->sudo))
+      return 0;
    return 1;
 }
 
