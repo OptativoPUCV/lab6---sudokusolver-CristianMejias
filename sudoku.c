@@ -49,10 +49,10 @@ int is_valid(Node* n){
 }
 
 void insertarNumeros(Node *nodo, int fila, int columna, List *listaAdj) {
-   //copiamos nodo en nuevo
-   Node *nuevoNodo = copy(nodo);
    //iteramos sobre los 9 numeros
    for (int num = 1 ; num < 10 ; num++) {
+      //copiamos nodo en nuevo y reservamos memoria
+      Node *nuevoNodo = copy(nodo);
       //inserto numero en la posicion
       nuevoNodo->sudo[fila][columna] = num;
       //inserto nodo a la lista
