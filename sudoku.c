@@ -106,7 +106,7 @@ int is_valid(Node* n) {
    if (cumpleSubMatriz(n->sudo))
       printf("CUMPLESUB");
 
-   return 1;
+   return 0;
 }
 
 void insertarNumeros(Node *nodo, int fila, int columna, List *listaAdj) {
