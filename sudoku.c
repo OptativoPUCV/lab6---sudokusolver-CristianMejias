@@ -101,9 +101,7 @@ int cumpleSubMatriz(int sudo[9][9]) {
 
 
 int is_valid(Node* n) {
-   if (cumpleFila(n->sudo) && cumpleColumna(n->sudo) && cumpleSubMatriz(n->sudo))
-      return 1;
-   return 0;
+   return (cumpleFila(n->sudo) && cumpleColumna(n->sudo) && cumpleSubMatriz(n->sudo));
 }
 
 void insertarNumeros(Node *nodo, int fila, int columna, List *listaAdj) {
