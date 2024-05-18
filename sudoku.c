@@ -99,9 +99,14 @@ int cumpleSubMatriz(int sudo[9][9]) {
 
 
 int is_valid(Node* n) {
-   if (cumpleFila(n->sudo) && cumpleColumna(n->sudo) && cumpleSubMatriz(n->sudo))
-      return 1;
-   return 0;
+   if (cumpleFila(n->sudo)
+      printf("CUMPLEFILA");
+   if (cumpleColumna(n->sudo))
+      printf("CUMPLECOL");
+   if (cumpleSubMatriz(n->sudo))
+      printf("CUMPLESUB");
+
+   return 1;
 }
 
 void insertarNumeros(Node *nodo, int fila, int columna, List *listaAdj) {
