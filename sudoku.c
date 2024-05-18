@@ -186,11 +186,43 @@ int is_final(Node* n){
     return noContieneCeros(n->sudo);
 }
 
-Node* DFS(Node* initial, int* cont){
-  return NULL;
+void agregarNodosListaAPila(List *lista, Stack *pila) {
+   if (lista == NULL)
+      return;
+   Node *nodo = first(lista);
+   while (nodo != NULL) {
+      push(pila, nodo);
+      nodo = next(lista);
+      //liberar memoria
+   }
 }
 
 
+Node* DFS(Node* initial, int* cont) {
+   //1 Cree un stack S (pila) e inserte el nodo.
+   Stack *pila = createStack();
+   push(pila, initial);
+
+   //2 Mientras el stack S no se encuentre vacío:
+   while (pila != NULL) {
+      //a) Saque y elimine el primer nodo de S.
+      Node *nodoAux = top(pila);
+      Node *nodoTop = copy(nodoAux);
+      pop(pila);
+      
+      //b) Verifique si corresponde a un estado final, si es así retorne el nodo.
+      if (is_final(nodoTop)) 
+         return nodoTop;
+      //c) Obtenga la lista de nodos adyacentes al nodo.
+      List *listaAdj = get_adj_nodes(nodoTop);
+      //d) Agregue los nodos de la lista (uno por uno) al stack S.
+      agregarNodosListaAPila(listaAdj, pila);
+      //e) Libere la memoria usada por el nodo.
+      free(nodoTop); 
+   }
+   //3 Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
+   return NULL;
+}
 
 /*
 int main( int argc, char *argv[] ){
