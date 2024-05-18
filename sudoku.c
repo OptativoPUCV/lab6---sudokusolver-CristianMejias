@@ -43,9 +43,31 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){
+int noCumpleFila(int *sudo) {
+   //        numeros {1,2,3,4,5,6,7,8,9};
+   int vNumeros[9] = {0,0,0,0,0,0,0,0,0};
+   int numActual;
 
-    return 1;
+   for (int fila = 0 ; fila < 9 ; fila++) {
+      for (int col = 0 ; col < 9 ; col++) {
+         numActual = sudo[fila][col];
+         if (vNumeros[numActual] == 0)
+            vNumeros[numActual] = 1;
+         else
+            return 0;
+      }
+   }
+   return 1;
+}
+
+
+
+int is_valid(Node* n) {
+   if (noCumpleFila(n->sudo))
+      return 0;
+   if (noCumpleColumna(n->sudo))
+      return 0;
+   return 1;
 }
 
 void insertarNumeros(Node *nodo, int fila, int columna, List *listaAdj) {
