@@ -47,12 +47,12 @@ int cumpleFila(int sudo[9][9]) {
    int numActual;
 
    for (int fila = 0 ; fila < 9 ; fila++) {
-      //        numeros {1,2,3,4,5,6,7,8,9};
-      int vNumeros[9] = {0,0,0,0,0,0,0,0,0};
+      //           {1,2,3,4,5,6,7,8,9};
+      int pos[9] = {0,0,0,0,0,0,0,0,0};
       for (int col = 0 ; col < 9 ; col++) {
          numActual = sudo[fila][col];
-         if (vNumeros[numActual] == 0)
-            vNumeros[numActual] = 1;
+         if (pos[numActual] == 0)
+            pos[numActual] = 1;
          else
             return 0;
       }
@@ -64,12 +64,12 @@ int cumpleColumna(int sudo[9][9]) {
    int numActual;
 
    for (int col = 0 ; col < 9 ; col++) {
-      //        numeros {1,2,3,4,5,6,7,8,9};
-      int vNumeros[9] = {0,0,0,0,0,0,0,0,0};
+      //           {1,2,3,4,5,6,7,8,9};
+      int pos[9] = {0,0,0,0,0,0,0,0,0};
       for (int fila = 0 ; fila < 9 ; fila++) {
          numActual = sudo[fila][col];
-         if (vNumeros[numActual] == 0)
-            vNumeros[numActual] = 1;
+         if (pos[numActual] == 0)
+            pos[numActual] = 1;
          else
             return 0;
       }
@@ -80,11 +80,9 @@ int cumpleColumna(int sudo[9][9]) {
 
 
 int is_valid(Node* n) {
-   if (!cumpleFila(n->sudo))
-      return 0;
-   if (!cumpleColumna(n->sudo))
-      return 0;
-   return 1;
+   if (cumpleFila(n->sudo) && cumpleColumna(n->sudo))
+      return 1;
+   return 0;
 }
 
 void insertarNumeros(Node *nodo, int fila, int columna, List *listaAdj) {
