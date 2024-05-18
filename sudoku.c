@@ -99,7 +99,7 @@ int cumpleSubMatriz(int sudo[9][9]) {
 
 
 int is_valid(Node* n) {
-   if (cumpleFila(n->sudo)
+   if (cumpleFila(n->sudo))
       printf("CUMPLEFILA");
    if (cumpleColumna(n->sudo))
       printf("CUMPLECOL");
