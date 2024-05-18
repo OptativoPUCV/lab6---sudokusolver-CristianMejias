@@ -76,3 +76,9 @@ sudoku.c:46:5: note: in a call to function ‘noCumpleFila’
 cc1: all warnings being treated as errors
 Compilation failed
 61bfa85
+Sat 18 May 2024 04:10:34 PM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  2|4
+total_score: 15/70
+f844be0
