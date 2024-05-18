@@ -48,9 +48,33 @@ int is_valid(Node* n){
     return 1;
 }
 
+void insertarNumeros(Node *nodo, int fila, int columna, List *listaAdj) {
+   //copiamos nodo en nuevo
+   Node *nuevoNodo = copy(nodo);
+   //iteramos sobre los 9 numeros
+   for (int num = 1 ; num < 10 ; num++) {
+      //inserto numero en la posicion
+      nuevoNodo->sudo[fila][columna] = num;
+      //inserto nodo a la lista
+      pushBack(listaAdj, nuevoNodo);
+   }
+   
+}
 
 List* get_adj_nodes(Node* n){
-    List* list=createList();
+   List* list=createList();
+   //buscamos posiciones vacias
+   int i,k;
+   for (i = 0; i < 9 ; i++) {
+      for (i = 0; i < 9 ; i++) {
+         if (n->sudo[i][k] == 0) {
+            //agregamos 9 numeros en esa posicion a la lista
+            insertarNumeros(n, i, k, list);
+         }
+      }
+   }
+
+   
     return list;
 }
 
