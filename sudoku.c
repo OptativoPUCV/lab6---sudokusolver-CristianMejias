@@ -44,11 +44,11 @@ void print_node(Node* n){
 }
 
 int noCumpleFila(int sudo[9][9]) {
-   //        numeros {1,2,3,4,5,6,7,8,9};
-   int vNumeros[9] = {0,0,0,0,0,0,0,0,0};
    int numActual;
 
    for (int fila = 0 ; fila < 9 ; fila++) {
+      //        numeros {1,2,3,4,5,6,7,8,9};
+      int vNumeros[9] = {0,0,0,0,0,0,0,0,0};
       for (int col = 0 ; col < 9 ; col++) {
          numActual = sudo[fila][col];
          if (vNumeros[numActual] == 0)
