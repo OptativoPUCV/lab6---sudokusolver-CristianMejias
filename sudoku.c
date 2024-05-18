@@ -47,14 +47,19 @@ int cumpleFila(int sudo[9][9]) {
    int numActual;
    int fila,col;
 
+   //recorrer cada fila
    for (fila = 0 ; fila < 9 ; fila++) {
       //           {1,2,3,4,5,6,7,8,9};
       int pos[9] = {0,0,0,0,0,0,0,0,0};
+      
+      //Recorrer cada columna
       for (col = 0 ; col < 9 ; col++) {
-         numActual = sudo[fila][col];
 
+         //obtener numero de esa casilla y si esta vacia saltamos a lasiguiente
+         numActual = sudo[fila][col];
          if (numActual == 0) continue;
-         
+
+         //aumentar y verificar el vector de apariciones
          if (pos[numActual - 1] == 0)
             pos[numActual - 1] = 1;
          else
@@ -68,14 +73,19 @@ int cumpleColumna(int sudo[9][9]) {
    int numActual;
    int fila,col;
 
+   //Recorrer cada columna
    for (col = 0 ; col < 9 ; col++) {
       //           {1,2,3,4,5,6,7,8,9};
       int pos[9] = {0,0,0,0,0,0,0,0,0};
+      
+      //recorrer cada fila
       for (fila = 0 ; fila < 9 ; fila++) {
          numActual = sudo[fila][col];
 
+         //obtener numero de esa casilla y si esta vacia saltamos a lasiguiente
          if (numActual == 0) continue;
-         
+
+         //aumentar y verificar el vector de apariciones
          if (pos[numActual - 1] == 0)
             pos[numActual - 1] = 1;
          else
@@ -88,16 +98,22 @@ int cumpleColumna(int sudo[9][9]) {
 int cumpleSubMatriz(int sudo[9][9]) {
    int numActual;
    
-   //recorrer las 9 submatrices
+   //recorrer las 9 submatrices (0 hasta 8)
    for (int numSub = 0 ; numSub < 9 ; numSub++) {
       int pos[9] = {0,0,0,0,0,0,0,0,0};
+      
+      //recorrer los 9 numeros de la submatriz
       for(int p = 0 ; p < 9 ; p++){
+         
+         //calculo indices
          int i = 3 * (numSub/3) + (p/3) ;
          int j = 3 * (numSub%3) + (p%3) ;
          numActual = sudo[i][j];
 
+         //obtener numero de esa casilla y si esta vacia saltamos a lasiguiente
          if (numActual == 0) continue;
 
+         //aumentar y verificar el vector de apariciones
          if (pos[numActual - 1] == 0)
             pos[numActual - 1] = 1;
          else
@@ -119,10 +135,25 @@ void insertarNumeros(Node *nodo, int fila, int columna, List *listaAdj) {
       Node *nuevoNodo = copy(nodo);
       //inserto numero en la posicion
       nuevoNodo->sudo[fila][columna] = num;
+
+      //verificamos que la posicion sea valida
+      if (is_valid(nuevoNodo))
+         pushBack(listaAdj, nuevoNodo);
+      else
+         free(nuevoNodo);
+   }
+}
+
+void insertarNumerosVerificados(Node *nodo, int fila, int columna, List *listaAdj) {
+   //iteramos sobre los 9 numeros
+   for (int num = 1 ; num < 10 ; num++) {
+      //copiamos nodo en nuevo y reservamos memoria
+      Node *nuevoNodo = copy(nodo);
+      //inserto numero en la posicion
+      nuevoNodo->sudo[fila][columna] = num;
       //inserto nodo a la lista
       pushBack(listaAdj, nuevoNodo);
    }
-   
 }
 
 List* get_adj_nodes(Node* n){
@@ -133,12 +164,10 @@ List* get_adj_nodes(Node* n){
       for (k = 0; k < 9 ; k++) {
          if (n->sudo[i][k] == 0) {
             //agregamos 9 numeros en esa posicion a la lista
-            insertarNumeros(n, i, k, list);
+            insertarNumerosVerificados(n, i, k, list);
          }
       }
    }
-
-   
     return list;
 }
 
