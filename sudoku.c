@@ -218,7 +218,7 @@ Node* DFS(Node* initial, int* cont) {
       //d) Agregue los nodos de la lista (uno por uno) al stack S.
       agregarNodosListaAPila(listaAdj, pila);
       //e) Libere la memoria usada por el nodo.
-      free(nodoTop); 
+      //free(nodoTop); 
    }
    //3 Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
    return NULL;
