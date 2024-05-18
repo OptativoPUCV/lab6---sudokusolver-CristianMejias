@@ -167,10 +167,11 @@ List* get_adj_nodes(Node* n){
          if (n->sudo[i][k] == 0) {
             //agregamos 9 numeros en esa posicion a la lista
             insertarNumerosVerificados(n, i, k, list);
+            return list;
          }
       }
    }
-    return list;
+   return list;
 }
 
 
