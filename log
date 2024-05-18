@@ -49,3 +49,30 @@ sudoku.c:68:8: error: implicit declaration of function ‘noCumpleColumna’; di
 cc1: all warnings being treated as errors
 Compilation failed
 fc32470
+Sat 18 May 2024 04:10:15 PM UTC: 
+ sudoku.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘noCumpleFila’:
+sudoku.c:53:20: error: assignment to ‘int’ from ‘int *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   53 |          numActual = sudo[fila][col];
+      |                    ^
+sudoku.c: In function ‘is_valid’:
+sudoku.c:66:22: error: passing argument 1 of ‘noCumpleFila’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   66 |    if (noCumpleFila(n->sudo))
+      |                     ~^~~~~~
+      |                      |
+      |                      int (*)[9]
+sudoku.c:46:23: note: expected ‘int * (*)[9]’ but argument is of type ‘int (*)[9]’
+   46 | int noCumpleFila(int *sudo[9][9]) {
+      |                  ~~~~~^~~~~~~~~~
+sudoku.c:66:8: error: ‘noCumpleFila’ accessing 648 bytes in a region of size 324 [-Werror=stringop-overflow=]
+   66 |    if (noCumpleFila(n->sudo))
+      |        ^~~~~~~~~~~~~~~~~~~~~
+sudoku.c:66:8: note: referencing argument 1 of type ‘int * (*)[9]’
+sudoku.c:46:5: note: in a call to function ‘noCumpleFila’
+   46 | int noCumpleFila(int *sudo[9][9]) {
+      |     ^~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+61bfa85
