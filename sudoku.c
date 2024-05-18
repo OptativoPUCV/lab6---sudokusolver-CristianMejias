@@ -81,7 +81,7 @@ int cumpleSubMatriz(int sudo[9][9]) {
    int numActual;
    
    //recorrer las 9 submatrices
-   for (int numSub = 1 ; numSub < 10 ; numSub++) {
+   for (int numSub = 0 ; numSub < 9 ; numSub++) {
       int pos[9] = {0,0,0,0,0,0,0,0,0};
       for(int p = 0 ; p < 9 ; p++){
          int i = 3 * (numSub/3) + (p/3) ;
