@@ -51,8 +51,8 @@ int cumpleFila(int sudo[9][9]) {
       int pos[9] = {0,0,0,0,0,0,0,0,0};
       for (int col = 0 ; col < 9 ; col++) {
          numActual = sudo[fila][col];
-         if (pos[numActual] == 0)
-            pos[numActual] = 1;
+         if (pos[numActual - 1] == 0)
+            pos[numActual - 1] = 1;
          else
             return 0;
       }
@@ -68,8 +68,8 @@ int cumpleColumna(int sudo[9][9]) {
       int pos[9] = {0,0,0,0,0,0,0,0,0};
       for (int fila = 0 ; fila < 9 ; fila++) {
          numActual = sudo[fila][col];
-         if (pos[numActual] == 0)
-            pos[numActual] = 1;
+         if (pos[numActual - 1] == 0)
+            pos[numActual - 1] = 1;
          else
             return 0;
       }
