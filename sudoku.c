@@ -128,7 +128,21 @@ int is_valid(Node* n) {
    return (cumpleFila(n->sudo) && cumpleColumna(n->sudo) && cumpleSubMatriz(n->sudo));
 }
 
+
 void insertarNumeros(Node *nodo, int fila, int columna, List *listaAdj) {
+   //iteramos sobre los 9 numeros
+   for (int num = 1 ; num < 10 ; num++) {
+      //copiamos nodo en nuevo y reservamos memoria
+      Node *nuevoNodo = copy(nodo);
+      //inserto numero en la posicion
+      nuevoNodo->sudo[fila][columna] = num;
+      //inserto nodo a la lista
+      pushBack(listaAdj, nuevoNodo);
+   }
+}
+
+
+void insertarNumerosVerificados(Node *nodo, int fila, int columna, List *listaAdj) {
    //iteramos sobre los 9 numeros
    for (int num = 1 ; num < 10 ; num++) {
       //copiamos nodo en nuevo y reservamos memoria
@@ -141,18 +155,6 @@ void insertarNumeros(Node *nodo, int fila, int columna, List *listaAdj) {
          pushBack(listaAdj, nuevoNodo);
       else
          free(nuevoNodo);
-   }
-}
-
-void insertarNumerosVerificados(Node *nodo, int fila, int columna, List *listaAdj) {
-   //iteramos sobre los 9 numeros
-   for (int num = 1 ; num < 10 ; num++) {
-      //copiamos nodo en nuevo y reservamos memoria
-      Node *nuevoNodo = copy(nodo);
-      //inserto numero en la posicion
-      nuevoNodo->sudo[fila][columna] = num;
-      //inserto nodo a la lista
-      pushBack(listaAdj, nuevoNodo);
    }
 }
 
