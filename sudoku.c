@@ -197,14 +197,13 @@ void agregarNodosListaAPila(List *lista, Stack *pila) {
    }
 }
 
-
 Node* DFS(Node* initial, int* cont) {
    //1 Cree un stack S (pila) e inserte el nodo.
    Stack *pila = createStack();
    push(pila, initial);
 
    //2 Mientras el stack S no se encuentre vacío:
-   while (pila != NULL) {
+   while (!is_empty(pila)) {
       //a) Saque y elimine el primer nodo de S.
       Node *nodoAux = top(pila);
       Node *nodoTop = copy(nodoAux);
@@ -218,7 +217,7 @@ Node* DFS(Node* initial, int* cont) {
       //d) Agregue los nodos de la lista (uno por uno) al stack S.
       agregarNodosListaAPila(listaAdj, pila);
       //e) Libere la memoria usada por el nodo.
-      //free(nodoTop); 
+      free(nodoTop); 
    }
    //3 Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
    return NULL;
