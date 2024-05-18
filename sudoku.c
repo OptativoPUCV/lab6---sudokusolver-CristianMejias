@@ -66,7 +66,7 @@ List* get_adj_nodes(Node* n){
    //buscamos posiciones vacias
    int i,k;
    for (i = 0; i < 9 ; i++) {
-      for (i = 0; i < 9 ; i++) {
+      for (k = 0; k < 9 ; k++) {
          if (n->sudo[i][k] == 0) {
             //agregamos 9 numeros en esa posicion a la lista
             insertarNumeros(n, i, k, list);
