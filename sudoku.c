@@ -52,6 +52,9 @@ int cumpleFila(int sudo[9][9]) {
       int pos[9] = {0,0,0,0,0,0,0,0,0};
       for (col = 0 ; col < 9 ; col++) {
          numActual = sudo[fila][col];
+
+         if (numActual == 0) continue;
+         
          if (pos[numActual - 1] == 0)
             pos[numActual - 1] = 1;
          else
@@ -70,6 +73,9 @@ int cumpleColumna(int sudo[9][9]) {
       int pos[9] = {0,0,0,0,0,0,0,0,0};
       for (fila = 0 ; fila < 9 ; fila++) {
          numActual = sudo[fila][col];
+
+         if (numActual == 0) continue;
+         
          if (pos[numActual - 1] == 0)
             pos[numActual - 1] = 1;
          else
@@ -89,6 +95,8 @@ int cumpleSubMatriz(int sudo[9][9]) {
          int i = 3 * (numSub/3) + (p/3) ;
          int j = 3 * (numSub%3) + (p%3) ;
          numActual = sudo[i][j];
+
+         if (numActual == 0) continue;
 
          if (pos[numActual - 1] == 0)
             pos[numActual - 1] = 1;
