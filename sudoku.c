@@ -235,3 +235,15 @@ int main( int argc, char *argv[] ){
 
   return 0;
 }*/
+
+int main(){
+
+  Node* initial= read_file("s12a.txt");;
+
+  int cont=0;
+  Node* final = DFS(initial, &cont);
+  printf("iterations:%d\n",cont);
+  print_node(final);
+
+  return 0;
+}
