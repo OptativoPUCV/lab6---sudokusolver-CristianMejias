@@ -77,10 +77,29 @@ int cumpleColumna(int sudo[9][9]) {
    return 1;
 }
 
+int cumpleSubMatriz(int sudo[9][9]) {
+   int numActual;
+   
+   //recorrer las 9 submatrices
+   for (int numSub = 1 ; numSub < 10 ; numSub++) {
+      int pos[9] = {0,0,0,0,0,0,0,0,0};
+      for(int p = 0 ; p < 9 ; p++){
+         int i = 3 * (numSub/3) + (p/3) ;
+         int j = 3 * (numSub%3) + (p%3) ;
+         numActual = sudo[i][j];
+
+         if (pos[numActual] == 0)
+            pos[numActual] = 1;
+         else
+            return 0;
+      }
+   }
+   return 1;
+}
 
 
 int is_valid(Node* n) {
-   if (cumpleFila(n->sudo) && cumpleColumna(n->sudo))
+   if (cumpleFila(n->sudo) && cumpleColumna(n->sudo) && cumpleSubMatriz(n->sudo))
       return 1;
    return 0;
 }
