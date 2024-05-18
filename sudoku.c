@@ -174,9 +174,16 @@ List* get_adj_nodes(Node* n){
    return list;
 }
 
+int noContieneCeros(int sudo[9][9]) {
+   for (int i = 0 ; i < 9 ; i++)
+      for (int k = 0 ; k < 9 ; k++)
+         if (sudo[i][k] == 0)
+            return 0;
+   return 1;
+}
 
 int is_final(Node* n){
-    return 0;
+    return noContieneCeros(n->sudo);
 }
 
 Node* DFS(Node* initial, int* cont){
