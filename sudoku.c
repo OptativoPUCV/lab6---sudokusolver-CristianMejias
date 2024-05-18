@@ -43,7 +43,7 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int noCumpleFila(int sudo[9][9]) {
+int cumpleFila(int sudo[9][9]) {
    int numActual;
 
    for (int fila = 0 ; fila < 9 ; fila++) {
@@ -63,7 +63,7 @@ int noCumpleFila(int sudo[9][9]) {
 
 
 int is_valid(Node* n) {
-   if (noCumpleFila(n->sudo))
+   if (!cumpleFila(n->sudo))
       return 0;
    //if (noCumpleColumna(n->sudo))
    //   return 0;
